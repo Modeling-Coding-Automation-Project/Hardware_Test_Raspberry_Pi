@@ -1,6 +1,7 @@
 #ifndef __MAIN_HPP__
 #define __MAIN_HPP__
 
+// #include "Python_Nonlinear_MPC_Twice_Differentiable_Tester.hpp"
 #include "Python_Nonlinear_MPC_Twice_Differentiable_Tester.hpp"
 
 // #include <fcntl.h>
@@ -15,6 +16,7 @@
 #include <time.h>
 // #include <unistd.h>
 
-Python_Nonlinear_MPC_Twice_Differentiable_Tester python_mpc_tester;
+// Python_Nonlinear_MPC_Twice_Differentiable_Tester python_mpc_tester;
+Python_Nonlinear_MPC_Optimization_Engine_Tester python_mpc_tester;
 
 #endif // __MAIN_HPP__
