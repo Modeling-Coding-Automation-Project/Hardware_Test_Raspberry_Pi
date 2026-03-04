@@ -26,7 +26,8 @@
         "-I${workspaceFolder}/external_libraries/python_math_to_cpp/python_math",
         "-I${workspaceFolder}/external_libraries/base_utility_cpp/base_utility",
         "${workspaceFolder}/source/app.cpp",
-        "${workspaceFolder}/source/Python_Nonlinear_MPC_Tester.cpp",
+        "${workspaceFolder}/source/Python_Nonlinear_MPC_Twice_Differentiable_Tester.cpp",
+        "${workspaceFolder}/source/Python_Nonlinear_MPC_Optimization_Engine_Tester.cpp",
         "-o",
         "${workspaceFolder}/app"
       ],
@@ -59,7 +60,8 @@
         "-I${workspaceFolder}/external_libraries/python_math_to_cpp/python_math",
         "-I${workspaceFolder}/external_libraries/base_utility_cpp/base_utility",
         "${workspaceFolder}/source/app.cpp",
-        "${workspaceFolder}/source/Python_Nonlinear_MPC_Tester.cpp",
+        "${workspaceFolder}/source/Python_Nonlinear_MPC_Twice_Differentiable_Tester.cpp",
+        "${workspaceFolder}/source/Python_Nonlinear_MPC_Optimization_Engine_Tester.cpp",
         "-o",
         "${workspaceFolder}/app"
       ],
