@@ -3,8 +3,8 @@
 Python_Nonlinear_MPC_Optimization_Engine_Tester::
     Python_Nonlinear_MPC_Optimization_Engine_Tester() {
   // Construct MPC uniquely to avoid copying and dangling references
-  this->_mpc =
-      std::make_unique<Tester_MPC_Type>(nonlinear_mpc_namespace::make());
+  this->_mpc = std::unique_ptr<Tester_MPC_Type>(
+      new Tester_MPC_Type(nonlinear_mpc_namespace::make()));
 
   this->_mpc->set_solver_max_iteration(10, 5);
 }
@@ -40,8 +40,9 @@ void Python_Nonlinear_MPC_Optimization_Engine_Tester::test_mpc(void) {
   ReferenceTrajectory_Type reference_trajectory;
 
   /* Simulation */
-  unsigned long time_start[MAX_STEP] = {0};
-  unsigned long time_end[MAX_STEP] = {0};
+  std::array<std::chrono::high_resolution_clock::time_point, MAX_STEP>
+      time_start;
+  std::array<std::chrono::high_resolution_clock::time_point, MAX_STEP> time_end;
 
   std::array<PythonControl::StateSpaceOutput_Type<float, 1>, MAX_STEP> px_array;
   std::array<PythonControl::StateSpaceOutput_Type<float, 1>, MAX_STEP> py_array;
