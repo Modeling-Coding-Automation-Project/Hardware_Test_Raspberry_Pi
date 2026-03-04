@@ -1,5 +1,5 @@
-#ifndef __PYTHON_NONLINEAR_MPC_TESTER_HPP__
-#define __PYTHON_NONLINEAR_MPC_TESTER_HPP__
+#ifndef __PYTHON_NONLINEAR_MPC_TWICE_DIFFERENTIABLE_TESTER_HPP__
+#define __PYTHON_NONLINEAR_MPC_TWICE_DIFFERENTIABLE_TESTER_HPP__
 
 #include "python_mpc.hpp"
 
@@ -26,7 +26,7 @@ using ReferenceTrajectory_Type =
 
 using Tester_MPC_Type = kinematic_bicycle_model_nonlinear_mpc::type;
 
-class Python_Nonlinear_MPC_Tester {
+class Python_Nonlinear_MPC_Twice_Differentiable_Tester {
 public:
   /* Constant, Type */
   static constexpr std::size_t INPUT_SIZE = nonlinear_mpc_namespace::INPUT_SIZE;
@@ -38,10 +38,10 @@ public:
 
 public:
   /* Constructor */
-  Python_Nonlinear_MPC_Tester();
+  Python_Nonlinear_MPC_Twice_Differentiable_Tester();
 
   /* Destructor */
-  ~Python_Nonlinear_MPC_Tester();
+  ~Python_Nonlinear_MPC_Twice_Differentiable_Tester();
 
 public:
   /* Functions */
@@ -52,4 +52,4 @@ private:
   std::unique_ptr<Tester_MPC_Type> _mpc;
 };
 
-#endif // __PYTHON_NONLINEAR_MPC_TESTER_HPP__
+#endif // __PYTHON_NONLINEAR_MPC_TWICE_DIFFERENTIABLE_TESTER_HPP__

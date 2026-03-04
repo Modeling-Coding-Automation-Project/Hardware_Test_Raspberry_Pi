@@ -1,16 +1,18 @@
-#include "Python_Nonlinear_MPC_Tester.hpp"
+#include "Python_Nonlinear_MPC_Optimization_Engine_Tester.hpp"
 
-Python_Nonlinear_MPC_Tester::Python_Nonlinear_MPC_Tester() {
+Python_Nonlinear_MPC_Optimization_Engine_Tester::
+    Python_Nonlinear_MPC_Optimization_Engine_Tester() {
   // Construct MPC uniquely to avoid copying and dangling references
   this->_mpc = std::unique_ptr<Tester_MPC_Type>(
       new Tester_MPC_Type(nonlinear_mpc_namespace::make()));
 
-  this->_mpc->set_solver_max_iteration(5);
+  this->_mpc->set_solver_max_iteration(10, 5);
 }
 
-Python_Nonlinear_MPC_Tester::~Python_Nonlinear_MPC_Tester() {}
+Python_Nonlinear_MPC_Optimization_Engine_Tester::
+    ~Python_Nonlinear_MPC_Optimization_Engine_Tester() {}
 
-void Python_Nonlinear_MPC_Tester::test_mpc(void) {
+void Python_Nonlinear_MPC_Optimization_Engine_Tester::test_mpc(void) {
   /* Simulation Setting */
   constexpr double SIMULATION_TIME = 20.0;
   constexpr double DELTA_TIME = 0.1;
@@ -18,11 +20,15 @@ void Python_Nonlinear_MPC_Tester::test_mpc(void) {
       static_cast<std::size_t>(SIMULATION_TIME / DELTA_TIME) + 1;
 
   /* Define MPC */
-  constexpr std::size_t STATE_SIZE = Python_Nonlinear_MPC_Tester::STATE_SIZE;
-  constexpr std::size_t INPUT_SIZE = Python_Nonlinear_MPC_Tester::INPUT_SIZE;
-  constexpr std::size_t OUTPUT_SIZE = Python_Nonlinear_MPC_Tester::OUTPUT_SIZE;
+  constexpr std::size_t STATE_SIZE =
+      Python_Nonlinear_MPC_Optimization_Engine_Tester::STATE_SIZE;
+  constexpr std::size_t INPUT_SIZE =
+      Python_Nonlinear_MPC_Optimization_Engine_Tester::INPUT_SIZE;
+  constexpr std::size_t OUTPUT_SIZE =
+      Python_Nonlinear_MPC_Optimization_Engine_Tester::OUTPUT_SIZE;
 
-  constexpr std::size_t NP = Python_Nonlinear_MPC_Tester::NP;
+  constexpr std::size_t NP =
+      Python_Nonlinear_MPC_Optimization_Engine_Tester::NP;
 
   Parameter_Type parameters;
 
@@ -75,8 +81,10 @@ void Python_Nonlinear_MPC_Tester::test_mpc(void) {
     time_end[sim_step] =
         std::chrono::high_resolution_clock::now(); // end measuring.
 
-    std::size_t solver_iteration =
+    std::tuple<std::size_t, std::size_t> solver_iterations =
         this->_mpc->get_solver_step_iterated_number();
+    std::size_t outer_solver_iteration = std::get<0>(solver_iterations);
+    std::size_t inner_solver_iteration = std::get<1>(solver_iterations);
 
     double yaw = 2.0 * std::atan2(Y(3, 0), Y(2, 0));
 
@@ -86,7 +94,7 @@ void Python_Nonlinear_MPC_Tester::test_mpc(void) {
     yaw_array[sim_step](0, 0) = yaw;
     v_array[sim_step](0, 0) = U(0, 0);
     delta_array[sim_step](0, 0) = U(1, 0);
-    iteration[sim_step](0, 0) = solver_iteration;
+    iteration[sim_step](0, 0) = inner_solver_iteration;
   }
 
   /* send result */
