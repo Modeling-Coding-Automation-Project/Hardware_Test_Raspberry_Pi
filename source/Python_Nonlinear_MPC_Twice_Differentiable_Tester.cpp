@@ -1,6 +1,6 @@
-#include "Python_Nonlinear_MPC_Tester.hpp"
+#include "Python_Nonlinear_MPC_Twice_Differentiable_Tester.hpp"
 
-Python_Nonlinear_MPC_Tester::Python_Nonlinear_MPC_Tester() {
+Python_Nonlinear_MPC_Twice_Differentiable_Tester::Python_Nonlinear_MPC_Twice_Differentiable_Tester() {
   // Construct MPC uniquely to avoid copying and dangling references
   this->_mpc = std::unique_ptr<Tester_MPC_Type>(
       new Tester_MPC_Type(nonlinear_mpc_namespace::make()));
@@ -8,9 +8,9 @@ Python_Nonlinear_MPC_Tester::Python_Nonlinear_MPC_Tester() {
   this->_mpc->set_solver_max_iteration(5);
 }
 
-Python_Nonlinear_MPC_Tester::~Python_Nonlinear_MPC_Tester() {}
+Python_Nonlinear_MPC_Twice_Differentiable_Tester::~Python_Nonlinear_MPC_Twice_Differentiable_Tester() {}
 
-void Python_Nonlinear_MPC_Tester::test_mpc(void) {
+void Python_Nonlinear_MPC_Twice_Differentiable_Tester::test_mpc(void) {
   /* Simulation Setting */
   constexpr double SIMULATION_TIME = 20.0;
   constexpr double DELTA_TIME = 0.1;
@@ -18,11 +18,11 @@ void Python_Nonlinear_MPC_Tester::test_mpc(void) {
       static_cast<std::size_t>(SIMULATION_TIME / DELTA_TIME) + 1;
 
   /* Define MPC */
-  constexpr std::size_t STATE_SIZE = Python_Nonlinear_MPC_Tester::STATE_SIZE;
-  constexpr std::size_t INPUT_SIZE = Python_Nonlinear_MPC_Tester::INPUT_SIZE;
-  constexpr std::size_t OUTPUT_SIZE = Python_Nonlinear_MPC_Tester::OUTPUT_SIZE;
+  constexpr std::size_t STATE_SIZE = Python_Nonlinear_MPC_Twice_Differentiable_Tester::STATE_SIZE;
+  constexpr std::size_t INPUT_SIZE = Python_Nonlinear_MPC_Twice_Differentiable_Tester::INPUT_SIZE;
+  constexpr std::size_t OUTPUT_SIZE = Python_Nonlinear_MPC_Twice_Differentiable_Tester::OUTPUT_SIZE;
 
-  constexpr std::size_t NP = Python_Nonlinear_MPC_Tester::NP;
+  constexpr std::size_t NP = Python_Nonlinear_MPC_Twice_Differentiable_Tester::NP;
 
   Parameter_Type parameters;
 
