@@ -1,5 +1,5 @@
-#ifndef __KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_MEASUREMENT_FUNCTION_JACOBIAN_HPP__
-#define __KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_MEASUREMENT_FUNCTION_JACOBIAN_HPP__
+#ifndef KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_MEASUREMENT_FUNCTION_JACOBIAN_HPP_
+#define KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_MEASUREMENT_FUNCTION_JACOBIAN_HPP_
 
 #include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_A.hpp"
 #include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_C.hpp"
@@ -53,4 +53,4 @@ inline auto function(const X_Type X, const Parameter_Type Parameters)
 } // namespace
   // kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_measurement_function_jacobian
 
-#endif // __KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_MEASUREMENT_FUNCTION_JACOBIAN_HPP__
+#endif // KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_MEASUREMENT_FUNCTION_JACOBIAN_HPP_

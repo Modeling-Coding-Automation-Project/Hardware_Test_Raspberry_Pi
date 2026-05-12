@@ -1,5 +1,5 @@
-#ifndef __NONLINEAR_MPC_REFERENCE_PATH_HPP__
-#define __NONLINEAR_MPC_REFERENCE_PATH_HPP__
+#ifndef NONLINEAR_MPC_REFERENCE_PATH_HPP_
+#define NONLINEAR_MPC_REFERENCE_PATH_HPP_
 
 #include <vector>
 
@@ -1213,4 +1213,4 @@ static std::vector<float> reference_path_data = {
 
 } // namespace nonlinear_mpc_reference_path
 
-#endif // __NONLINEAR_MPC_REFERENCE_PATH_HPP__
+#endif // NONLINEAR_MPC_REFERENCE_PATH_HPP_

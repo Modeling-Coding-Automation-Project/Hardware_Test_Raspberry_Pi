@@ -1,5 +1,5 @@
-#ifndef __KINEMATIC_BICYCLE_MODEL_SQP_HESSIAN_F_UX_HPP__
-#define __KINEMATIC_BICYCLE_MODEL_SQP_HESSIAN_F_UX_HPP__
+#ifndef KINEMATIC_BICYCLE_MODEL_SQP_HESSIAN_F_UX_HPP_
+#define KINEMATIC_BICYCLE_MODEL_SQP_HESSIAN_F_UX_HPP_
 
 #include "python_math.hpp"
 #include "python_numpy.hpp"
@@ -116,4 +116,4 @@ public:
 
 } // namespace kinematic_bicycle_model_sqp_hessian_f_ux
 
-#endif // __KINEMATIC_BICYCLE_MODEL_SQP_HESSIAN_F_UX_HPP__
+#endif // KINEMATIC_BICYCLE_MODEL_SQP_HESSIAN_F_UX_HPP_

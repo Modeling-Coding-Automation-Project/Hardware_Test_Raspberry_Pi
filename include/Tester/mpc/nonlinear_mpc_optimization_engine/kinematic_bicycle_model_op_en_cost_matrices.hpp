@@ -1,5 +1,5 @@
-#ifndef __KINEMATIC_BICYCLE_MODEL_OP_EN_COST_MATRICES_HPP__
-#define __KINEMATIC_BICYCLE_MODEL_OP_EN_COST_MATRICES_HPP__
+#ifndef KINEMATIC_BICYCLE_MODEL_OP_EN_COST_MATRICES_HPP_
+#define KINEMATIC_BICYCLE_MODEL_OP_EN_COST_MATRICES_HPP_
 
 #include "kinematic_bicycle_model_op_en_oe_measurement_function.hpp"
 #include "kinematic_bicycle_model_op_en_oe_measurement_jacobian_x.hpp"
@@ -131,4 +131,4 @@ inline auto make() -> type {
 
 } // namespace kinematic_bicycle_model_op_en_cost_matrices
 
-#endif // __KINEMATIC_BICYCLE_MODEL_OP_EN_COST_MATRICES_HPP__
+#endif // KINEMATIC_BICYCLE_MODEL_OP_EN_COST_MATRICES_HPP_

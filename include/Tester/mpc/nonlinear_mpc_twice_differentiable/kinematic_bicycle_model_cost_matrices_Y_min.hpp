@@ -1,5 +1,5 @@
-#ifndef __KINEMATIC_BICYCLE_MODEL_COST_MATRICES_Y_MIN_HPP__
-#define __KINEMATIC_BICYCLE_MODEL_COST_MATRICES_Y_MIN_HPP__
+#ifndef KINEMATIC_BICYCLE_MODEL_COST_MATRICES_Y_MIN_HPP_
+#define KINEMATIC_BICYCLE_MODEL_COST_MATRICES_Y_MIN_HPP_
 
 #include "python_numpy.hpp"
 
@@ -17,4 +17,4 @@ inline auto make(void) -> type { return make_SparseMatrixEmpty<float, 4, 1>(); }
 
 } // namespace kinematic_bicycle_model_cost_matrices_Y_min
 
-#endif // __KINEMATIC_BICYCLE_MODEL_COST_MATRICES_Y_MIN_HPP__
+#endif // KINEMATIC_BICYCLE_MODEL_COST_MATRICES_Y_MIN_HPP_

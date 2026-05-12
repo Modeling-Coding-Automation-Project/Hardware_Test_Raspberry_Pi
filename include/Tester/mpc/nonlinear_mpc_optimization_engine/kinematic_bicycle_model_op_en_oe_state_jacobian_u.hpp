@@ -1,5 +1,5 @@
-#ifndef __KINEMATIC_BICYCLE_MODEL_OP_EN_OE_STATE_JACOBIAN_U_HPP__
-#define __KINEMATIC_BICYCLE_MODEL_OP_EN_OE_STATE_JACOBIAN_U_HPP__
+#ifndef KINEMATIC_BICYCLE_MODEL_OP_EN_OE_STATE_JACOBIAN_U_HPP_
+#define KINEMATIC_BICYCLE_MODEL_OP_EN_OE_STATE_JACOBIAN_U_HPP_
 
 #include "python_math.hpp"
 #include "python_numpy.hpp"
@@ -87,4 +87,4 @@ public:
 
 } // namespace kinematic_bicycle_model_op_en_oe_state_jacobian_u
 
-#endif // __KINEMATIC_BICYCLE_MODEL_OP_EN_OE_STATE_JACOBIAN_U_HPP__
+#endif // KINEMATIC_BICYCLE_MODEL_OP_EN_OE_STATE_JACOBIAN_U_HPP_

@@ -1,5 +1,5 @@
-#ifndef __KINEMATIC_BICYCLE_MODEL_EKF_C_HPP__
-#define __KINEMATIC_BICYCLE_MODEL_EKF_C_HPP__
+#ifndef KINEMATIC_BICYCLE_MODEL_EKF_C_HPP_
+#define KINEMATIC_BICYCLE_MODEL_EKF_C_HPP_
 
 #include "python_numpy.hpp"
 
@@ -17,4 +17,4 @@ inline auto make(void) -> type {
 
 } // namespace kinematic_bicycle_model_ekf_C
 
-#endif // __KINEMATIC_BICYCLE_MODEL_EKF_C_HPP__
+#endif // KINEMATIC_BICYCLE_MODEL_EKF_C_HPP_

@@ -1,5 +1,5 @@
-#ifndef __KINEMATIC_BICYCLE_MODEL_PARAMETER_HPP__
-#define __KINEMATIC_BICYCLE_MODEL_PARAMETER_HPP__
+#ifndef KINEMATIC_BICYCLE_MODEL_PARAMETER_HPP_
+#define KINEMATIC_BICYCLE_MODEL_PARAMETER_HPP_
 
 namespace kinematic_bicycle_model_parameter {
 
@@ -11,4 +11,4 @@ public:
 
 } // namespace kinematic_bicycle_model_parameter
 
-#endif // __KINEMATIC_BICYCLE_MODEL_PARAMETER_HPP__
+#endif // KINEMATIC_BICYCLE_MODEL_PARAMETER_HPP_

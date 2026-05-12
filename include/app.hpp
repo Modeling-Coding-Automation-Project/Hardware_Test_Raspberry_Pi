@@ -1,5 +1,5 @@
-#ifndef __MAIN_HPP__
-#define __MAIN_HPP__
+#ifndef MAIN_HPP_
+#define MAIN_HPP_
 
 // #include "Python_Nonlinear_MPC_Twice_Differentiable_Tester.hpp"
 #include "Python_Nonlinear_MPC_Optimization_Engine_Tester.hpp"
@@ -19,4 +19,4 @@
 // Python_Nonlinear_MPC_Twice_Differentiable_Tester python_mpc_tester;
 Python_Nonlinear_MPC_Optimization_Engine_Tester python_mpc_tester;
 
-#endif // __MAIN_HPP__
+#endif // MAIN_HPP_
