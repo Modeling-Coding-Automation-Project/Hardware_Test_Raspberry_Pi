@@ -1,9 +1,9 @@
-#ifndef KINEMATIC_BICYCLE_MODEL_SQP_MEASUREMENT_FUNCTION_HPP_
-#define KINEMATIC_BICYCLE_MODEL_SQP_MEASUREMENT_FUNCTION_HPP_
+#ifndef KINEMATIC_BICYCLE_MODEL_OP_EN_OE_MEASUREMENT_EQUATION_HPP_
+#define KINEMATIC_BICYCLE_MODEL_OP_EN_OE_MEASUREMENT_EQUATION_HPP_
 
 #include "python_math.hpp"
 
-namespace kinematic_bicycle_model_sqp_measurement_function {
+namespace kinematic_bicycle_model_op_en_oe_measurement_equation {
 
 using namespace PythonMath;
 
@@ -11,8 +11,8 @@ template <typename X_Type, typename U_Type, typename Parameter_Type,
           typename Y_Type>
 class Function {
 public:
-  static inline auto sympy_function(const float py, const float q3,
-                                    const float px, const float q0) -> Y_Type {
+  static inline auto sympy_function(const float q3, const float px,
+                                    const float py, const float q0) -> Y_Type {
 
     Y_Type result;
 
@@ -35,10 +35,10 @@ public:
 
     float q3 = X.template get<3, 0>();
 
-    return sympy_function(py, q3, px, q0);
+    return sympy_function(q3, px, py, q0);
   }
 };
 
-} // namespace kinematic_bicycle_model_sqp_measurement_function
+} // namespace kinematic_bicycle_model_op_en_oe_measurement_equation
 
-#endif // KINEMATIC_BICYCLE_MODEL_SQP_MEASUREMENT_FUNCTION_HPP_
+#endif // KINEMATIC_BICYCLE_MODEL_OP_EN_OE_MEASUREMENT_EQUATION_HPP_

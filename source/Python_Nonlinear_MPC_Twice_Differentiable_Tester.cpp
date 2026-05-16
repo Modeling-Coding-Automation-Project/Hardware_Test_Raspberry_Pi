@@ -52,8 +52,8 @@ void Python_Nonlinear_MPC_Twice_Differentiable_Tester::test_mpc(void) {
 
   for (std::size_t sim_step = 0; sim_step < MAX_STEP; ++sim_step) {
     /* system response */
-    X = state_function::function(X, U, parameters);
-    Y = measurement_function::function(X, parameters);
+    X = state_equation::function(X, U, parameters);
+    Y = measurement_equation::function(X, parameters);
 
     /* controller */
     for (std::size_t j = 0; j < NP; ++j) {

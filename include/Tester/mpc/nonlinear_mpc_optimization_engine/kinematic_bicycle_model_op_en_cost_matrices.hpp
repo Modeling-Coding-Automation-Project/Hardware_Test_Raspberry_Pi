@@ -1,9 +1,9 @@
 #ifndef KINEMATIC_BICYCLE_MODEL_OP_EN_COST_MATRICES_HPP_
 #define KINEMATIC_BICYCLE_MODEL_OP_EN_COST_MATRICES_HPP_
 
-#include "kinematic_bicycle_model_op_en_oe_measurement_function.hpp"
+#include "kinematic_bicycle_model_op_en_oe_measurement_equation.hpp"
 #include "kinematic_bicycle_model_op_en_oe_measurement_jacobian_x.hpp"
-#include "kinematic_bicycle_model_op_en_oe_state_function.hpp"
+#include "kinematic_bicycle_model_op_en_oe_state_equation.hpp"
 #include "kinematic_bicycle_model_op_en_oe_state_jacobian_u.hpp"
 #include "kinematic_bicycle_model_op_en_oe_state_jacobian_x.hpp"
 #include "kinematic_bicycle_model_op_en_parameter.hpp"
@@ -93,37 +93,37 @@ inline auto make() -> type {
       Measurement_Jacobian_X_Matrix_Type>(Qx, R, Qy, U_min, U_max, Y_min,
                                           Y_max);
 
-  PythonOptimization::StateFunction_Object<X_Type, U_Type, Parameter_Type>
-      state_function =
-          kinematic_bicycle_model_op_en_oe_state_function::Function<
+  PythonOptimization::StateEquation_Object<X_Type, U_Type, Parameter_Type>
+      state_equation =
+          kinematic_bicycle_model_op_en_oe_state_equation::Function<
               X_Type, U_Type, Parameter_Type>::function;
 
-  PythonOptimization::MeasurementFunction_Object<Y_Type, X_Type, U_Type,
+  PythonOptimization::MeasurementEquation_Object<Y_Type, X_Type, U_Type,
                                                  Parameter_Type>
-      measurement_function =
-          kinematic_bicycle_model_op_en_oe_measurement_function::Function<
+      measurement_equation =
+          kinematic_bicycle_model_op_en_oe_measurement_equation::Function<
               X_Type, U_Type, Parameter_Type, Y_Type>::function;
 
-  PythonOptimization::StateFunctionJacobian_X_Object<
+  PythonOptimization::StateEquationJacobian_X_Object<
       State_Jacobian_X_Matrix_Type, X_Type, U_Type, Parameter_Type>
       state_jacobian_x_function =
           kinematic_bicycle_model_op_en_oe_state_jacobian_x::Function<
               X_Type, U_Type, Parameter_Type>::function;
 
-  PythonOptimization::StateFunctionJacobian_U_Object<
+  PythonOptimization::StateEquationJacobian_U_Object<
       State_Jacobian_U_Matrix_Type, X_Type, U_Type, Parameter_Type>
       state_jacobian_u_function =
           kinematic_bicycle_model_op_en_oe_state_jacobian_u::Function<
               X_Type, U_Type, Parameter_Type>::function;
 
-  PythonOptimization::MeasurementFunctionJacobian_X_Object<
+  PythonOptimization::MeasurementEquationJacobian_X_Object<
       Measurement_Jacobian_X_Matrix_Type, X_Type, U_Type, Parameter_Type>
       measurement_jacobian_x_function =
           kinematic_bicycle_model_op_en_oe_measurement_jacobian_x::Function<
               X_Type, U_Type, Parameter_Type>::function;
 
   cost_matrices.set_function_objects(
-      state_function, measurement_function, state_jacobian_x_function,
+      state_equation, measurement_equation, state_jacobian_x_function,
       state_jacobian_u_function, measurement_jacobian_x_function);
 
   return cost_matrices;

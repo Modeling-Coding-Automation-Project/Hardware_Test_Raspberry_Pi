@@ -1,19 +1,20 @@
-#ifndef KINEMATIC_BICYCLE_MODEL_OP_EN_OE_STATE_FUNCTION_HPP_
-#define KINEMATIC_BICYCLE_MODEL_OP_EN_OE_STATE_FUNCTION_HPP_
+#ifndef KINEMATIC_BICYCLE_MODEL_SQP_STATE_EQUATION_HPP_
+#define KINEMATIC_BICYCLE_MODEL_SQP_STATE_EQUATION_HPP_
 
 #include "python_math.hpp"
 
-namespace kinematic_bicycle_model_op_en_oe_state_function {
+namespace kinematic_bicycle_model_sqp_state_equation {
 
 using namespace PythonMath;
 
 template <typename X_Type, typename U_Type, typename Parameter_Type>
 class Function {
 public:
-  static inline auto sympy_function(const float v, const float px,
-                                    const float q0, const float delta_time,
-                                    const float delta, const float wheel_base,
-                                    const float q3, const float py) -> X_Type {
+  static inline auto sympy_function(const float q0, const float v,
+                                    const float py, const float delta,
+                                    const float delta_time, const float px,
+                                    const float wheel_base, const float q3)
+      -> X_Type {
 
     X_Type result;
 
@@ -53,10 +54,10 @@ public:
 
     float wheel_base = Parameters.wheel_base;
 
-    return sympy_function(v, px, q0, delta_time, delta, wheel_base, q3, py);
+    return sympy_function(q0, v, py, delta, delta_time, px, wheel_base, q3);
   }
 };
 
-} // namespace kinematic_bicycle_model_op_en_oe_state_function
+} // namespace kinematic_bicycle_model_sqp_state_equation
 
-#endif // KINEMATIC_BICYCLE_MODEL_OP_EN_OE_STATE_FUNCTION_HPP_
+#endif // KINEMATIC_BICYCLE_MODEL_SQP_STATE_EQUATION_HPP_

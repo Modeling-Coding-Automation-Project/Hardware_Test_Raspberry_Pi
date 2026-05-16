@@ -1,28 +1,28 @@
-#ifndef KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_STATE_FUNCTION_JACOBIAN_HPP_
-#define KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_STATE_FUNCTION_JACOBIAN_HPP_
+#ifndef KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_STATE_EQUATION_JACOBIAN_HPP_
+#define KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_STATE_EQUATION_JACOBIAN_HPP_
 
-#include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_A.hpp"
-#include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_C.hpp"
-#include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_parameter.hpp"
+#include "kinematic_bicycle_model_ekf_A.hpp"
+#include "kinematic_bicycle_model_ekf_C.hpp"
+#include "kinematic_bicycle_model_nonlinear_mpc_ekf_parameter.hpp"
 
 #include "python_control.hpp"
 
-namespace kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_function_jacobian {
+namespace kinematic_bicycle_model_nonlinear_mpc_ekf_state_equation_jacobian {
 
 using namespace PythonControl;
 
 using Parameter_Type =
-    kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_parameter::Parameter_Type;
+    kinematic_bicycle_model_nonlinear_mpc_ekf_parameter::Parameter_Type;
 
 using namespace PythonMath;
 
-using A_Type = kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_A::type;
+using A_Type = kinematic_bicycle_model_ekf_A::type;
 using X_Type = StateSpaceState_Type<float, A_Type::COLS>;
 using U_Type = StateSpaceInput_Type<float, 2>;
 
-inline auto sympy_function(const float v, const float q0,
-                           const float delta_time, const float delta,
-                           const float wheel_base, const float q3) -> A_Type {
+inline auto sympy_function(const float q0, const float v, const float delta,
+                           const float delta_time, const float wheel_base,
+                           const float q3) -> A_Type {
 
   A_Type result;
 
@@ -30,7 +30,7 @@ inline auto sympy_function(const float v, const float q0,
 
   float x1 = q0 * x0;
 
-  float x2 = x0 * tan(delta) / (2 * wheel_base);
+  float x2 = x0 * tan(delta) / (static_cast<float>(2) * wheel_base);
 
   float x3 = cos(x2);
 
@@ -71,10 +71,9 @@ inline auto function(const X_Type X, const U_Type U,
 
   float wheel_base = Parameters.wheel_base;
 
-  return sympy_function(v, q0, delta_time, delta, wheel_base, q3);
+  return sympy_function(q0, v, delta, delta_time, wheel_base, q3);
 }
 
-} // namespace
-  // kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_function_jacobian
+} // namespace kinematic_bicycle_model_nonlinear_mpc_ekf_state_equation_jacobian
 
-#endif // KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_STATE_FUNCTION_JACOBIAN_HPP_
+#endif // KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_STATE_EQUATION_JACOBIAN_HPP_
