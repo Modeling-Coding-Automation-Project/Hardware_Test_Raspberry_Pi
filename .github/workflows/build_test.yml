@@ -15,28 +15,20 @@ jobs:
       with:
         submodules: recursive
     - name: Install dependencies
-      run: |
-        sudo apt-get update
+      run: 'sudo apt-get update
+
         sudo apt-get install -y g++
+
+        '
     - name: Build C++ application
-      run: |
-        g++ -std=c++11 -Wall \
-          -I . \
-          -I ./include \
-          -I ./include/Tester/mpc/nonlinear_mpc_twice_differentiable \
-          -I ./include/Tester/mpc/nonlinear_mpc_optimization_engine \
-          -I ./source \
-          -I ./external_libraries/python_mpc_to_cpp/mpc_utility \
-          -I ./external_libraries/python_mpc_to_cpp/python_mpc \
-          -I ./external_libraries/python_optimization_to_cpp/optimization_utility \
-          -I ./external_libraries/python_optimization_to_cpp/python_optimization \
-          -I ./external_libraries/python_control_to_cpp/python_control \
-          -I ./external_libraries/python_numpy_to_cpp/python_numpy \
-          -I ./external_libraries/python_numpy_to_cpp/base_matrix \
-          -I ./external_libraries/python_math_to_cpp/base_math \
-          -I ./external_libraries/python_math_to_cpp/python_math \
-          -I ./external_libraries/base_utility_cpp/base_utility \
-          -o ./app \
-          ./source/app.cpp \
-          ./source/Python_Nonlinear_MPC_Twice_Differentiable_Tester.cpp \
-          ./source/Python_Nonlinear_MPC_Optimization_Engine_Tester.cpp
+      run: "g++ -std=c++11 -Wall \\\n  -I . \\\n  -I ./include \\\n  -I ./include/Tester/mpc/nonlinear_mpc_twice_differentiable\
+        \ \\\n  -I ./include/Tester/mpc/nonlinear_mpc_optimization_engine \\\n  -I\
+        \ ./source \\\n  -I ./external_libraries/python_mpc_to_cpp/mpc_utility \\\n\
+        \  -I ./external_libraries/python_mpc_to_cpp/python_mpc \\\n  -I ./external_libraries/python_optimization_to_cpp/optimization_utility\
+        \ \\\n  -I ./external_libraries/python_optimization_to_cpp/python_optimization\
+        \ \\\n  -I ./external_libraries/python_control_to_cpp/python_control \\\n\
+        \  -I ./external_libraries/python_numpy_to_cpp/python_numpy \\\n  -I ./external_libraries/python_numpy_to_cpp/base_matrix\
+        \ \\\n  -I ./external_libraries/python_math_to_cpp/base_math \\\n  -I ./external_libraries/python_math_to_cpp/python_math\
+        \ \\\n  -I ./external_libraries/base_utility_cpp/base_utility \\\n  -o ./app\
+        \ \\\n  ./source/app.cpp \\\n  ./source/Python_Nonlinear_MPC_Twice_Differentiable_Tester.cpp\
+        \ \\\n  ./source/Python_Nonlinear_MPC_Optimization_Engine_Tester.cpp\n"
