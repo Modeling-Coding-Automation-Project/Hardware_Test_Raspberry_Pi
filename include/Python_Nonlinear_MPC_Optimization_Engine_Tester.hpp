@@ -15,10 +15,10 @@
 #include <tuple>
 
 namespace nonlinear_mpc_namespace = kinematic_bicycle_model_op_en_nonlinear_mpc;
-namespace state_function =
-    kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_function;
-namespace measurement_function =
-    kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_measurement_function;
+namespace state_equation =
+    kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_equation;
+namespace measurement_equation =
+    kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_measurement_equation;
 
 using Parameter_Type =
     kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_parameter::Parameter_Type;

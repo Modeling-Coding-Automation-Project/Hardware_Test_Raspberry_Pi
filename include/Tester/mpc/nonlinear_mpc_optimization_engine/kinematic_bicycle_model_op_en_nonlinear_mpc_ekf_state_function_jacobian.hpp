@@ -1,5 +1,5 @@
-#ifndef KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_STATE_FUNCTION_JACOBIAN_HPP_
-#define KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_STATE_FUNCTION_JACOBIAN_HPP_
+#ifndef KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_STATE_EQUATION_JACOBIAN_HPP_
+#define KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_STATE_EQUATION_JACOBIAN_HPP_
 
 #include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_A.hpp"
 #include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_C.hpp"
@@ -7,7 +7,7 @@
 
 #include "python_control.hpp"
 
-namespace kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_function_jacobian {
+namespace kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_equation_jacobian {
 
 using namespace PythonControl;
 
@@ -75,6 +75,6 @@ inline auto function(const X_Type X, const U_Type U,
 }
 
 } // namespace
-  // kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_function_jacobian
+  // kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_equation_jacobian
 
-#endif // KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_STATE_FUNCTION_JACOBIAN_HPP_
+#endif // KINEMATIC_BICYCLE_MODEL_OP_EN_NONLINEAR_MPC_EKF_STATE_EQUATION_JACOBIAN_HPP_

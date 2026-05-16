@@ -1,12 +1,12 @@
-#ifndef KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_STATE_FUNCTION_HPP_
-#define KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_STATE_FUNCTION_HPP_
+#ifndef KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_STATE_EQUATION_HPP_
+#define KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_STATE_EQUATION_HPP_
 
 #include "kinematic_bicycle_model_ekf_A.hpp"
 #include "kinematic_bicycle_model_nonlinear_mpc_ekf_parameter.hpp"
 
 #include "python_control.hpp"
 
-namespace kinematic_bicycle_model_nonlinear_mpc_ekf_state_function {
+namespace kinematic_bicycle_model_nonlinear_mpc_ekf_state_equation {
 
 using namespace PythonControl;
 
@@ -64,6 +64,6 @@ inline auto function(const X_Type X, const U_Type U,
   return sympy_function(q0, v, py, delta, delta_time, px, wheel_base, q3);
 }
 
-} // namespace kinematic_bicycle_model_nonlinear_mpc_ekf_state_function
+} // namespace kinematic_bicycle_model_nonlinear_mpc_ekf_state_equation
 
-#endif // KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_STATE_FUNCTION_HPP_
+#endif // KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_STATE_EQUATION_HPP_

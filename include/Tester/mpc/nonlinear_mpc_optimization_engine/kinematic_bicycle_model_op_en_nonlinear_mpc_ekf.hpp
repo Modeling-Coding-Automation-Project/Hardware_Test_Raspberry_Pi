@@ -3,11 +3,11 @@
 
 #include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_A.hpp"
 #include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_C.hpp"
-#include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_measurement_function.hpp"
-#include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_measurement_function_jacobian.hpp"
+#include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_measurement_equation.hpp"
+#include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_measurement_equation_jacobian.hpp"
 #include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_parameter.hpp"
-#include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_function.hpp"
-#include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_function_jacobian.hpp"
+#include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_equation.hpp"
+#include "kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_equation_jacobian.hpp"
 
 #include "python_control.hpp"
 
@@ -52,38 +52,38 @@ inline auto make() -> type {
 
   Parameter_Type parameters;
 
-  StateFunction_Object<X_Type, U_Type, Parameter_Type> state_function_object =
+  StateEquation_Object<X_Type, U_Type, Parameter_Type> state_equation_object =
       [](const X_Type &X, const U_Type &U, const Parameter_Type &Parameters) {
-        return kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_function::
+        return kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_equation::
             function(X, U, Parameters);
       };
 
-  StateFunctionJacobian_Object<A_Type, X_Type, U_Type, Parameter_Type>
-      state_function_jacobian_object = [](const X_Type &X, const U_Type &U,
+  StateEquationJacobian_Object<A_Type, X_Type, U_Type, Parameter_Type>
+      state_equation_jacobian_object = [](const X_Type &X, const U_Type &U,
                                           const Parameter_Type &Parameters) {
-        return kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_function_jacobian::
+        return kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_state_equation_jacobian::
             function(X, U, Parameters);
       };
 
-  MeasurementFunction_Object<Y_Type, X_Type, Parameter_Type>
-      measurement_function_object = [](const X_Type &X,
+  MeasurementEquation_Object<Y_Type, X_Type, Parameter_Type>
+      measurement_equation_object = [](const X_Type &X,
                                        const Parameter_Type &Parameters) {
-        return kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_measurement_function::
+        return kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_measurement_equation::
             function(X, Parameters);
       };
 
-  MeasurementFunctionJacobian_Object<C_Type, X_Type, Parameter_Type>
-      measurement_function_jacobian_object = [](const X_Type &X,
+  MeasurementEquationJacobian_Object<C_Type, X_Type, Parameter_Type>
+      measurement_equation_jacobian_object = [](const X_Type &X,
                                                 const Parameter_Type
                                                     &Parameters) {
-        return kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_measurement_function_jacobian::
+        return kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_measurement_equation_jacobian::
             function(X, Parameters);
       };
 
   return ExtendedKalmanFilter_Type<A_Type, C_Type, U_Type, Q_Type, R_Type,
                                    Parameter_Type, NUMBER_OF_DELAY>(
-      Q, R, state_function_object, state_function_jacobian_object,
-      measurement_function_object, measurement_function_jacobian_object,
+      Q, R, state_equation_object, state_equation_jacobian_object,
+      measurement_equation_object, measurement_equation_jacobian_object,
       parameters);
 }
 

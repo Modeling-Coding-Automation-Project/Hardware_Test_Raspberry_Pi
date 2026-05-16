@@ -1,5 +1,5 @@
-#ifndef KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_FUNCTION_HPP_
-#define KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_FUNCTION_HPP_
+#ifndef KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_EQUATION_HPP_
+#define KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_EQUATION_HPP_
 
 #include "kinematic_bicycle_model_ekf_A.hpp"
 #include "kinematic_bicycle_model_ekf_C.hpp"
@@ -7,7 +7,7 @@
 
 #include "python_control.hpp"
 
-namespace kinematic_bicycle_model_nonlinear_mpc_ekf_measurement_function {
+namespace kinematic_bicycle_model_nonlinear_mpc_ekf_measurement_equation {
 
 using namespace PythonControl;
 
@@ -48,6 +48,6 @@ inline auto function(const X_Type X, const Parameter_Type Parameters)
   return sympy_function(py, q3, px, q0);
 }
 
-} // namespace kinematic_bicycle_model_nonlinear_mpc_ekf_measurement_function
+} // namespace kinematic_bicycle_model_nonlinear_mpc_ekf_measurement_equation
 
-#endif // KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_FUNCTION_HPP_
+#endif // KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_EQUATION_HPP_

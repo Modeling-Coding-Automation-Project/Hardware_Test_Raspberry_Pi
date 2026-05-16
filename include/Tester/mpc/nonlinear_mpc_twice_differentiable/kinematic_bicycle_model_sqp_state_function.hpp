@@ -1,9 +1,9 @@
-#ifndef KINEMATIC_BICYCLE_MODEL_SQP_STATE_FUNCTION_HPP_
-#define KINEMATIC_BICYCLE_MODEL_SQP_STATE_FUNCTION_HPP_
+#ifndef KINEMATIC_BICYCLE_MODEL_SQP_STATE_EQUATION_HPP_
+#define KINEMATIC_BICYCLE_MODEL_SQP_STATE_EQUATION_HPP_
 
 #include "python_math.hpp"
 
-namespace kinematic_bicycle_model_sqp_state_function {
+namespace kinematic_bicycle_model_sqp_state_equation {
 
 using namespace PythonMath;
 
@@ -58,6 +58,6 @@ public:
   }
 };
 
-} // namespace kinematic_bicycle_model_sqp_state_function
+} // namespace kinematic_bicycle_model_sqp_state_equation
 
-#endif // KINEMATIC_BICYCLE_MODEL_SQP_STATE_FUNCTION_HPP_
+#endif // KINEMATIC_BICYCLE_MODEL_SQP_STATE_EQUATION_HPP_
