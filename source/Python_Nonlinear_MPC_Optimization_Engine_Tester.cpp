@@ -86,15 +86,15 @@ void Python_Nonlinear_MPC_Optimization_Engine_Tester::test_mpc(void) {
     std::size_t outer_solver_iteration = std::get<0>(solver_iterations);
     std::size_t inner_solver_iteration = std::get<1>(solver_iterations);
 
-    double yaw = 2.0 * std::atan2(Y(3, 0), Y(2, 0));
+    double yaw = 2.0 * std::atan2(Y(3), Y(2));
 
     /* store result */
-    px_array[sim_step](0, 0) = Y(0, 0);
-    py_array[sim_step](0, 0) = Y(1, 0);
-    yaw_array[sim_step](0, 0) = yaw;
-    v_array[sim_step](0, 0) = U(0, 0);
-    delta_array[sim_step](0, 0) = U(1, 0);
-    iteration[sim_step](0, 0) = inner_solver_iteration;
+    px_array[sim_step](0) = Y(0);
+    py_array[sim_step](0) = Y(1);
+    yaw_array[sim_step](0) = yaw;
+    v_array[sim_step](0) = U(0);
+    delta_array[sim_step](0) = U(1);
+    iteration[sim_step](0) = inner_solver_iteration;
   }
 
   /* send result */
@@ -108,9 +108,9 @@ void Python_Nonlinear_MPC_Optimization_Engine_Tester::test_mpc(void) {
                                                               time_start[i])
             .count();
 
-    std::cout << px_array[i](0, 0) << ", " << py_array[i](0, 0) << ", "
-              << yaw_array[i](0, 0) << ", " << v_array[i](0, 0) << ", "
-              << delta_array[i](0, 0) << ", " << iteration[i](0, 0) << ", "
+    std::cout << px_array[i](0) << ", " << py_array[i](0) << ", "
+              << yaw_array[i](0) << ", " << v_array[i](0) << ", "
+              << delta_array[i](0) << ", " << iteration[i](0) << ", "
               << computation_time_us << std::endl;
   }
 

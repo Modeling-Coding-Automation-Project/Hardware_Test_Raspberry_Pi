@@ -1,6 +1,7 @@
 #include "Python_Nonlinear_MPC_Twice_Differentiable_Tester.hpp"
 
-Python_Nonlinear_MPC_Twice_Differentiable_Tester::Python_Nonlinear_MPC_Twice_Differentiable_Tester() {
+Python_Nonlinear_MPC_Twice_Differentiable_Tester::
+    Python_Nonlinear_MPC_Twice_Differentiable_Tester() {
   // Construct MPC uniquely to avoid copying and dangling references
   this->_mpc = std::unique_ptr<Tester_MPC_Type>(
       new Tester_MPC_Type(nonlinear_mpc_namespace::make()));
@@ -8,7 +9,8 @@ Python_Nonlinear_MPC_Twice_Differentiable_Tester::Python_Nonlinear_MPC_Twice_Dif
   this->_mpc->set_solver_max_iteration(5);
 }
 
-Python_Nonlinear_MPC_Twice_Differentiable_Tester::~Python_Nonlinear_MPC_Twice_Differentiable_Tester() {}
+Python_Nonlinear_MPC_Twice_Differentiable_Tester::
+    ~Python_Nonlinear_MPC_Twice_Differentiable_Tester() {}
 
 void Python_Nonlinear_MPC_Twice_Differentiable_Tester::test_mpc(void) {
   /* Simulation Setting */
@@ -18,11 +20,15 @@ void Python_Nonlinear_MPC_Twice_Differentiable_Tester::test_mpc(void) {
       static_cast<std::size_t>(SIMULATION_TIME / DELTA_TIME) + 1;
 
   /* Define MPC */
-  constexpr std::size_t STATE_SIZE = Python_Nonlinear_MPC_Twice_Differentiable_Tester::STATE_SIZE;
-  constexpr std::size_t INPUT_SIZE = Python_Nonlinear_MPC_Twice_Differentiable_Tester::INPUT_SIZE;
-  constexpr std::size_t OUTPUT_SIZE = Python_Nonlinear_MPC_Twice_Differentiable_Tester::OUTPUT_SIZE;
+  constexpr std::size_t STATE_SIZE =
+      Python_Nonlinear_MPC_Twice_Differentiable_Tester::STATE_SIZE;
+  constexpr std::size_t INPUT_SIZE =
+      Python_Nonlinear_MPC_Twice_Differentiable_Tester::INPUT_SIZE;
+  constexpr std::size_t OUTPUT_SIZE =
+      Python_Nonlinear_MPC_Twice_Differentiable_Tester::OUTPUT_SIZE;
 
-  constexpr std::size_t NP = Python_Nonlinear_MPC_Twice_Differentiable_Tester::NP;
+  constexpr std::size_t NP =
+      Python_Nonlinear_MPC_Twice_Differentiable_Tester::NP;
 
   Parameter_Type parameters;
 
@@ -78,15 +84,15 @@ void Python_Nonlinear_MPC_Twice_Differentiable_Tester::test_mpc(void) {
     std::size_t solver_iteration =
         this->_mpc->get_solver_step_iterated_number();
 
-    double yaw = 2.0 * std::atan2(Y(3, 0), Y(2, 0));
+    double yaw = 2.0 * std::atan2(Y(3), Y(2));
 
     /* store result */
-    px_array[sim_step](0, 0) = Y(0, 0);
-    py_array[sim_step](0, 0) = Y(1, 0);
-    yaw_array[sim_step](0, 0) = yaw;
-    v_array[sim_step](0, 0) = U(0, 0);
-    delta_array[sim_step](0, 0) = U(1, 0);
-    iteration[sim_step](0, 0) = solver_iteration;
+    px_array[sim_step](0) = Y(0);
+    py_array[sim_step](0) = Y(1);
+    yaw_array[sim_step](0) = yaw;
+    v_array[sim_step](0) = U(0);
+    delta_array[sim_step](0) = U(1);
+    iteration[sim_step](0) = solver_iteration;
   }
 
   /* send result */
@@ -100,9 +106,9 @@ void Python_Nonlinear_MPC_Twice_Differentiable_Tester::test_mpc(void) {
                                                               time_start[i])
             .count();
 
-    std::cout << px_array[i](0, 0) << ", " << py_array[i](0, 0) << ", "
-              << yaw_array[i](0, 0) << ", " << v_array[i](0, 0) << ", "
-              << delta_array[i](0, 0) << ", " << iteration[i](0, 0) << ", "
+    std::cout << px_array[i](0) << ", " << py_array[i](0) << ", "
+              << yaw_array[i](0) << ", " << v_array[i](0) << ", "
+              << delta_array[i](0) << ", " << iteration[i](0) << ", "
               << computation_time_us << std::endl;
   }
 
