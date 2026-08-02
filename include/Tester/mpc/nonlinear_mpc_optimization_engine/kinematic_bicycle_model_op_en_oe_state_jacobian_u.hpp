@@ -6,7 +6,7 @@
 
 namespace kinematic_bicycle_model_op_en_oe_state_jacobian_u {
 
-using namespace PythonMath;
+using namespace PythonNumpy;
 using namespace PythonNumpy;
 
 using State_Jacobian_u_Type_SparseAvailable =

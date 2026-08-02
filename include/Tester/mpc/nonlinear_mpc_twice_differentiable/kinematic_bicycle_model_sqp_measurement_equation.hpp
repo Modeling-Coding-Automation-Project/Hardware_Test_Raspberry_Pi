@@ -5,7 +5,7 @@
 
 namespace kinematic_bicycle_model_sqp_measurement_equation {
 
-using namespace PythonMath;
+using namespace PythonNumpy;
 
 template <typename X_Type, typename U_Type, typename Parameter_Type,
           typename Y_Type>

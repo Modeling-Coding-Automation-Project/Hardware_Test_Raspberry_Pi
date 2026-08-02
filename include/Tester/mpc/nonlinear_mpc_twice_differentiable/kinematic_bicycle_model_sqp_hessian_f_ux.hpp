@@ -6,7 +6,7 @@
 
 namespace kinematic_bicycle_model_sqp_hessian_f_ux {
 
-using namespace PythonMath;
+using namespace PythonNumpy;
 using namespace PythonNumpy;
 
 using State_Hessian_ux_Type_SparseAvailable =

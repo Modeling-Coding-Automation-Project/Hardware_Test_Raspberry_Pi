@@ -13,7 +13,7 @@ using namespace PythonControl;
 using Parameter_Type =
     kinematic_bicycle_model_nonlinear_mpc_ekf_parameter::Parameter_Type;
 
-using namespace PythonMath;
+using namespace PythonNumpy;
 
 using A_Type = kinematic_bicycle_model_ekf_A::type;
 using C_Type = kinematic_bicycle_model_ekf_C::type;

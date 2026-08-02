@@ -13,7 +13,7 @@ using namespace PythonControl;
 using Parameter_Type =
     kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_parameter::Parameter_Type;
 
-using namespace PythonMath;
+using namespace PythonNumpy;
 
 using A_Type = kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_A::type;
 using X_Type = StateSpaceState_Type<float, A_Type::COLS>;

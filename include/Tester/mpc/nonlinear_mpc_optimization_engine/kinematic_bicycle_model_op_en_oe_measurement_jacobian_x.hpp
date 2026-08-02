@@ -6,7 +6,7 @@
 
 namespace kinematic_bicycle_model_op_en_oe_measurement_jacobian_x {
 
-using namespace PythonMath;
+using namespace PythonNumpy;
 using namespace PythonNumpy;
 
 using Measurement_Jacobian_x_Type_SparseAvailable =

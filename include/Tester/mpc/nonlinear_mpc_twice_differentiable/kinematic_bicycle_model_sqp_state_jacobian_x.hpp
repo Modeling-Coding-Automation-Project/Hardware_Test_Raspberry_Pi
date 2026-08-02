@@ -6,7 +6,7 @@
 
 namespace kinematic_bicycle_model_sqp_state_jacobian_x {
 
-using namespace PythonMath;
+using namespace PythonNumpy;
 using namespace PythonNumpy;
 
 using State_Jacobian_x_Type_SparseAvailable =
