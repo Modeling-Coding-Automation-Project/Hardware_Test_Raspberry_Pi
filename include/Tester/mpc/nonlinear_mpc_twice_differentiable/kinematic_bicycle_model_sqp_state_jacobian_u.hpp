@@ -19,9 +19,9 @@ using State_Jacobian_u_Type =
 template <typename X_Type, typename U_Type, typename Parameter_Type>
 class Function {
 public:
-  static inline auto sympy_function(const float q0, const float v,
-                                    const float delta, const float delta_time,
-                                    const float wheel_base, const float q3)
+  static inline auto sympy_function(const float q3, const float wheel_base,
+                                    const float v, const float delta,
+                                    const float delta_time, const float q0)
       -> State_Jacobian_u_Type {
 
     State_Jacobian_u_Type result;
@@ -77,11 +77,11 @@ public:
 
     float delta = U.template get<1, 0>();
 
-    float delta_time = Parameters.delta_time;
-
     float wheel_base = Parameters.wheel_base;
 
-    return sympy_function(q0, v, delta, delta_time, wheel_base, q3);
+    float delta_time = Parameters.delta_time;
+
+    return sympy_function(q3, wheel_base, v, delta, delta_time, q0);
   }
 };
 

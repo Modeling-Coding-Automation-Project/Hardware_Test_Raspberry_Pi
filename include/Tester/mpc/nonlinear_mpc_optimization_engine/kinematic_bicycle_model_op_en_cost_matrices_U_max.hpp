@@ -11,8 +11,12 @@ using type = DenseMatrix_Type<float, 2, 1>;
 
 inline auto make(void) -> type {
 
-  return make_DenseMatrix<2, 1>(static_cast<float>(1.0),
-                                static_cast<float>(1.0));
+  auto result = make_DenseMatrixZeros<float, 2, 1>();
+
+  result.unsafe_access(0, 0) = static_cast<float>(1.0);
+  result.unsafe_access(1, 0) = static_cast<float>(1.0);
+
+  return result;
 }
 
 } // namespace kinematic_bicycle_model_op_en_cost_matrices_U_max

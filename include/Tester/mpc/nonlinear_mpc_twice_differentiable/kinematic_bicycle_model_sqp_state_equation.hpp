@@ -10,10 +10,10 @@ using namespace PythonNumpy;
 template <typename X_Type, typename U_Type, typename Parameter_Type>
 class Function {
 public:
-  static inline auto sympy_function(const float q0, const float v,
-                                    const float py, const float delta,
-                                    const float delta_time, const float px,
-                                    const float wheel_base, const float q3)
+  static inline auto sympy_function(const float q3, const float wheel_base,
+                                    const float v, const float py,
+                                    const float px, const float delta_time,
+                                    const float delta, const float q0)
       -> X_Type {
 
     X_Type result;
@@ -50,11 +50,11 @@ public:
 
     float delta = U.template get<1, 0>();
 
-    float delta_time = Parameters.delta_time;
-
     float wheel_base = Parameters.wheel_base;
 
-    return sympy_function(q0, v, py, delta, delta_time, px, wheel_base, q3);
+    float delta_time = Parameters.delta_time;
+
+    return sympy_function(q3, wheel_base, v, py, px, delta_time, delta, q0);
   }
 };
 

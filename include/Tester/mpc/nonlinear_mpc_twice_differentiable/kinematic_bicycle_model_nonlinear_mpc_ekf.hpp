@@ -1,8 +1,8 @@
 #ifndef KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_HPP_
 #define KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_HPP_
 
-#include "kinematic_bicycle_model_ekf_A.hpp"
-#include "kinematic_bicycle_model_ekf_C.hpp"
+#include "kinematic_bicycle_model_nonlinear_mpc_ekf_A.hpp"
+#include "kinematic_bicycle_model_nonlinear_mpc_ekf_C.hpp"
 #include "kinematic_bicycle_model_nonlinear_mpc_ekf_measurement_equation.hpp"
 #include "kinematic_bicycle_model_nonlinear_mpc_ekf_measurement_equation_jacobian.hpp"
 #include "kinematic_bicycle_model_nonlinear_mpc_ekf_parameter.hpp"
@@ -18,13 +18,13 @@ using namespace PythonControl;
 
 constexpr std::size_t NUMBER_OF_DELAY = 0;
 
-using A_Type = kinematic_bicycle_model_ekf_A::type;
+using A_Type = kinematic_bicycle_model_nonlinear_mpc_ekf_A::type;
 
-using C_Type = kinematic_bicycle_model_ekf_C::type;
+using C_Type = kinematic_bicycle_model_nonlinear_mpc_ekf_C::type;
 
-constexpr std::size_t STATE_SIZE = A_Type::COLS;
+constexpr std::size_t STATE_SIZE = A_Type::ROWS;
 constexpr std::size_t INPUT_SIZE = 2;
-constexpr std::size_t OUTPUT_SIZE = C_Type::COLS;
+constexpr std::size_t OUTPUT_SIZE = C_Type::ROWS;
 
 using X_Type = StateSpaceState_Type<float, STATE_SIZE>;
 using U_Type = StateSpaceInput_Type<float, INPUT_SIZE>;

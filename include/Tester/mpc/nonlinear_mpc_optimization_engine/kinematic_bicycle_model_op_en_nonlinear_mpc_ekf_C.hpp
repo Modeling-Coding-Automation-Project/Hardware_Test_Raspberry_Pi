@@ -11,8 +11,14 @@ using type = DiagMatrix_Type<float, 4>;
 
 inline auto make(void) -> type {
 
-  return make_DiagMatrix<4>(static_cast<float>(1.0), static_cast<float>(1.0),
-                            static_cast<float>(1.0), static_cast<float>(1.0));
+  auto result = make_DiagMatrixZeros<float, 4>();
+
+  result.unsafe_access(0) = static_cast<float>(1.0);
+  result.unsafe_access(1) = static_cast<float>(1.0);
+  result.unsafe_access(2) = static_cast<float>(1.0);
+  result.unsafe_access(3) = static_cast<float>(1.0);
+
+  return result;
 }
 
 } // namespace kinematic_bicycle_model_op_en_nonlinear_mpc_ekf_C

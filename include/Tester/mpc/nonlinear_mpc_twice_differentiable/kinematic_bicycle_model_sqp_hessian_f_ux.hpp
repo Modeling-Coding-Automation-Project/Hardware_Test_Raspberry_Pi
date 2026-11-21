@@ -25,20 +25,20 @@ using State_Hessian_ux_Type =
 template <typename X_Type, typename U_Type, typename Parameter_Type>
 class Function {
 public:
-  static inline auto sympy_function(const float q0, const float v,
-                                    const float delta, const float delta_time,
-                                    const float wheel_base, const float q3)
+  static inline auto sympy_function(const float q3, const float wheel_base,
+                                    const float v, const float delta,
+                                    const float delta_time, const float q0)
       -> State_Hessian_ux_Type {
 
     State_Hessian_ux_Type result;
 
     float x0 = delta_time * q0;
 
-    float x1 = static_cast<float>(1) / wheel_base;
+    float x1 = 1 / wheel_base;
 
     float x2 = tan(delta);
 
-    float x3 = delta_time * x1 * x2 / static_cast<float>(2);
+    float x3 = delta_time * x1 * x2 / 2;
 
     float x4 = v * x3;
 
@@ -50,8 +50,7 @@ public:
 
     float x8 = x3 * x7;
 
-    float x9 = delta_time * v * x1 * (x2 * x2 + static_cast<float>(1)) /
-               static_cast<float>(2);
+    float x9 = delta_time * v * x1 * (x2 * x2 + 1) / 2;
 
     float x10 = -x5 * x9;
 
@@ -59,7 +58,7 @@ public:
 
     result.template set<0, 0>(static_cast<float>(0));
     result.template set<0, 1>(static_cast<float>(0));
-    result.template set<0, 2>(static_cast<float>(static_cast<float>(4) * x0));
+    result.template set<0, 2>(static_cast<float>(4 * x0));
     result.template set<0, 3>(static_cast<float>(0));
     result.template set<1, 0>(static_cast<float>(0));
     result.template set<1, 1>(static_cast<float>(0));
@@ -67,9 +66,8 @@ public:
     result.template set<1, 3>(static_cast<float>(0));
     result.template set<2, 0>(static_cast<float>(0));
     result.template set<2, 1>(static_cast<float>(0));
-    result.template set<2, 2>(
-        static_cast<float>(static_cast<float>(2) * delta_time * q3));
-    result.template set<2, 3>(static_cast<float>(static_cast<float>(2) * x0));
+    result.template set<2, 2>(static_cast<float>(2 * delta_time * q3));
+    result.template set<2, 3>(static_cast<float>(2 * x0));
     result.template set<3, 0>(static_cast<float>(0));
     result.template set<3, 1>(static_cast<float>(0));
     result.template set<3, 2>(static_cast<float>(0));
@@ -106,11 +104,11 @@ public:
 
     float delta = U.template get<1, 0>();
 
-    float delta_time = Parameters.delta_time;
-
     float wheel_base = Parameters.wheel_base;
 
-    return sympy_function(q0, v, delta, delta_time, wheel_base, q3);
+    float delta_time = Parameters.delta_time;
+
+    return sympy_function(q3, wheel_base, v, delta, delta_time, q0);
   }
 };
 

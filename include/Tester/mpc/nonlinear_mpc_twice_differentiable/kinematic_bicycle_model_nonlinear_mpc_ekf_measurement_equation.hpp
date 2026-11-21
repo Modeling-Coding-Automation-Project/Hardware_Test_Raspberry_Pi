@@ -1,8 +1,8 @@
-#ifndef KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_EQUATION_HPP_
-#define KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_EQUATION_HPP_
+#ifndef __KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_EQUATION_HPP__
+#define __KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_EQUATION_HPP__
 
-#include "kinematic_bicycle_model_ekf_A.hpp"
-#include "kinematic_bicycle_model_ekf_C.hpp"
+#include "kinematic_bicycle_model_nonlinear_mpc_ekf_A.hpp"
+#include "kinematic_bicycle_model_nonlinear_mpc_ekf_C.hpp"
 #include "kinematic_bicycle_model_nonlinear_mpc_ekf_parameter.hpp"
 
 #include "python_control.hpp"
@@ -16,12 +16,12 @@ using Parameter_Type =
 
 using namespace PythonNumpy;
 
-using A_Type = kinematic_bicycle_model_ekf_A::type;
-using C_Type = kinematic_bicycle_model_ekf_C::type;
-using X_Type = StateSpaceState_Type<float, A_Type::COLS>;
-using Y_Type = StateSpaceOutput_Type<float, C_Type::COLS>;
+using A_Type = kinematic_bicycle_model_nonlinear_mpc_ekf_A::type;
+using C_Type = kinematic_bicycle_model_nonlinear_mpc_ekf_C::type;
+using X_Type = StateSpaceState_Type<float, A_Type::ROWS>;
+using Y_Type = StateSpaceOutput_Type<float, C_Type::ROWS>;
 
-inline auto sympy_function(const float py, const float q3, const float px,
+inline auto sympy_function(const float q3, const float px, const float py,
                            const float q0) -> Y_Type {
 
   Y_Type result;
@@ -45,9 +45,9 @@ inline auto function(const X_Type X, const Parameter_Type Parameters)
 
   float q3 = X.template get<3, 0>();
 
-  return sympy_function(py, q3, px, q0);
+  return sympy_function(q3, px, py, q0);
 }
 
 } // namespace kinematic_bicycle_model_nonlinear_mpc_ekf_measurement_equation
 
-#endif // KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_EQUATION_HPP_
+#endif // __KINEMATIC_BICYCLE_MODEL_NONLINEAR_MPC_EKF_MEASUREMENT_EQUATION_HPP__

@@ -11,8 +11,8 @@ template <typename X_Type, typename U_Type, typename Parameter_Type,
           typename Y_Type>
 class Function {
 public:
-  static inline auto sympy_function(const float py, const float q3,
-                                    const float px, const float q0) -> Y_Type {
+  static inline auto sympy_function(const float q3, const float px,
+                                    const float py, const float q0) -> Y_Type {
 
     Y_Type result;
 
@@ -35,7 +35,7 @@ public:
 
     float q3 = X.template get<3, 0>();
 
-    return sympy_function(py, q3, px, q0);
+    return sympy_function(q3, px, py, q0);
   }
 };
 

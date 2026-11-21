@@ -33,14 +33,14 @@ using State_Hessian_xx_Type =
 template <typename X_Type, typename U_Type, typename Parameter_Type>
 class Function {
 public:
-  static inline auto sympy_function(const float delta_time, const float v)
+  static inline auto sympy_function(const float v, const float delta_time)
       -> State_Hessian_xx_Type {
 
     State_Hessian_xx_Type result;
 
     float x0 = delta_time * v;
 
-    float x1 = static_cast<float>(2) * x0;
+    float x1 = 2 * x0;
 
     result.template set<0, 0>(static_cast<float>(0));
     result.template set<0, 1>(static_cast<float>(0));
@@ -52,7 +52,7 @@ public:
     result.template set<1, 3>(static_cast<float>(0));
     result.template set<2, 0>(static_cast<float>(0));
     result.template set<2, 1>(static_cast<float>(0));
-    result.template set<2, 2>(static_cast<float>(static_cast<float>(4) * x0));
+    result.template set<2, 2>(static_cast<float>(4 * x0));
     result.template set<2, 3>(static_cast<float>(0));
     result.template set<3, 0>(static_cast<float>(0));
     result.template set<3, 1>(static_cast<float>(0));
@@ -118,7 +118,7 @@ public:
 
     float delta_time = Parameters.delta_time;
 
-    return sympy_function(delta_time, v);
+    return sympy_function(v, delta_time);
   }
 };
 
